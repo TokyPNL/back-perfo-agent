@@ -36,7 +36,7 @@ const Agents: CollectionConfig = {
       name: 'projets',
       type: 'relationship',
       relationTo: 'projets',
-      hasMany: true,
+       hasMany: true,
     },
     {
       name: 'nombreRdv',

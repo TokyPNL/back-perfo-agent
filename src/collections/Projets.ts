@@ -11,13 +11,13 @@ const Projets: CollectionConfig = {
         type: 'text',
         required: true,
       },
-      {
-        name: 'manager',
-        type: 'relationship',
-        relationTo: 'agents',
-        required: true, // Un projet est géré par un seul manager
+      // {
+      //   name: 'manager',
+      //   type: 'relationship',
+      //   relationTo: 'agents',
+      //   required: true, // Un projet est géré par un seul manager
         
-      },
+      // },
       
     ],
   };

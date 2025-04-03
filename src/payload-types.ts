@@ -191,7 +191,6 @@ export interface Agent {
 export interface Projet {
   id: string;
   nom: string;
-  manager: string | Agent;
   updatedAt: string;
   createdAt: string;
 }
@@ -330,7 +329,6 @@ export interface AgentsSelect<T extends boolean = true> {
  */
 export interface ProjetsSelect<T extends boolean = true> {
   nom?: T;
-  manager?: T;
   updatedAt?: T;
   createdAt?: T;
 }

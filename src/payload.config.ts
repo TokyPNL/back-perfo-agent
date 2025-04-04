@@ -26,12 +26,12 @@ export default buildConfig({
   },
   collections: [Users, Media, Managers, Agents, Projets],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || '36795ec7c43e2ffc2fd090bf',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '36795ec7c43e2ffc2fd090bf',
+    url: process.env.DATABASE_URI || '',
   }),
   sharp,
   plugins: [

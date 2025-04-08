@@ -44,7 +44,7 @@ const Agents: CollectionConfig = {
       required: true,
     },
     {
-      name: 'RdvCumuleWeek',
+      name: 'RdvSemaine',
       type: 'number',
       required: true,
       defaultValue: 0, 
@@ -58,7 +58,7 @@ const Agents: CollectionConfig = {
     beforeChange: [
       async ({ data, operation }) => {
         if (operation === 'update' && data.nombreRdv > 0) {
-          data.RdvCumuleWeek += data.nombreRdv;
+          data.RdvSemaine += data.nombreRdv;
         }
         return data;
       },

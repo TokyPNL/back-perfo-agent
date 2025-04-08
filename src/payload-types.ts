@@ -68,8 +68,6 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
-    media: Media;
-    managers: Manager;
     agents: Agent;
     projets: Projet;
     'payload-locked-documents': PayloadLockedDocument;
@@ -79,8 +77,6 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
-    managers: ManagersSelect<false> | ManagersSelect<true>;
     agents: AgentsSelect<false> | AgentsSelect<true>;
     projets: ProjetsSelect<false> | ProjetsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -138,38 +134,6 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: string;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "managers".
- */
-export interface Manager {
-  id: string;
-  nom: string;
-  prenom: string;
-  matricule: string;
-  nombreRdv?: number[] | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "agents".
  */
 export interface Agent {
@@ -204,14 +168,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: string | User;
-      } | null)
-    | ({
-        relationTo: 'media';
-        value: string | Media;
-      } | null)
-    | ({
-        relationTo: 'managers';
-        value: string | Manager;
       } | null)
     | ({
         relationTo: 'agents';
@@ -277,36 +233,6 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
- */
-export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "managers_select".
- */
-export interface ManagersSelect<T extends boolean = true> {
-  nom?: T;
-  prenom?: T;
-  matricule?: T;
-  nombreRdv?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

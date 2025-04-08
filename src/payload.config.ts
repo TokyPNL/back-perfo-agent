@@ -13,6 +13,9 @@ import { Media } from './collections/Media'
 import Managers from './collections/Managers'
 import Agents from './collections/Agents'
 import Projets from './collections/Projets'
+import { en } from 'payload/i18n/en';
+import { de } from 'payload/i18n/de';
+import { fr } from 'payload/i18n/fr';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +27,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Managers, Agents, Projets],
+  collections: [Users, Agents, Projets],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '36795ec7c43e2ffc2fd090bf',
   typescript: {
@@ -39,4 +42,9 @@ export default buildConfig({
     // storage-adapter-placeholder
   ],
   cors: '*', // allow requests from all origins
+  
+  i18n: {
+    fallbackLanguage: 'fr',// supported languages
+    supportedLanguages: { en, fr },
+  }
 })

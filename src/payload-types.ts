@@ -180,7 +180,7 @@ export interface Agent {
   type: 'agent' | 'manager';
   projets?: (string | Projet)[] | null;
   nombreRdv: number;
-  RdvCumule: number;
+  RdvCumuleWeek: number;
   updatedAt: string;
   createdAt: string;
 }
@@ -319,7 +319,7 @@ export interface AgentsSelect<T extends boolean = true> {
   type?: T;
   projets?: T;
   nombreRdv?: T;
-  RdvCumule?: T;
+  RdvCumuleWeek?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -44,7 +44,7 @@ const Agents: CollectionConfig = {
       required: true,
     },
     {
-      name: 'RdvCumule',
+      name: 'RdvCumuleWeek',
       type: 'number',
       required: true,
       defaultValue: 0, 
@@ -56,16 +56,9 @@ const Agents: CollectionConfig = {
 
   hooks: {
     beforeChange: [
-      async ({ data, req, originalDoc }) => {
-        if (originalDoc) {
-          const oldNombreRdv = originalDoc.nombreRdv || 0;
-          const newNombreRdv = data.nombreRdv || 0;
-          const difference = newNombreRdv - oldNombreRdv;
-
-          return {
-            ...data,
-            RdvCumule: (originalDoc.RdvCumule || 0) + difference,
-          };
+      async ({ data, operation }) => {
+        if (operation === 'update' && data.nombreRdv > 0) {
+          data.RdvCumuleWeek += data.nombreRdv;
         }
         return data;
       },

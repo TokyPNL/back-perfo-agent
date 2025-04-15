@@ -56,10 +56,29 @@ const Agents: CollectionConfig = {
 
   hooks: {
     beforeChange: [
-      async ({ data, operation }) => {
-        if (operation === 'update' && data.nombreRdv > 0) {
-          data.RdvSemaine += data.nombreRdv;
+      // async ({ data, operation }) => {
+      //   if (operation === 'update' && data.nombreRdv > 0) {
+      //     data.RdvSemaine += data.nombreRdv;
+      //   }
+      //   return data;
+      // },
+
+      async ({ data, originalDoc, operation }) => {
+        if (operation === 'update') {
+          const ancienNombreRdv = originalDoc?.nombreRdv || 0;
+          const nouveauNombreRdv = data.nombreRdv;
+  
+          // Si nombreRdv est fourni ET a changé
+          if (
+            typeof nouveauNombreRdv === 'number' &&
+            nouveauNombreRdv > 0 &&
+            nouveauNombreRdv !== ancienNombreRdv
+          ) {
+            const ancienRdvSemaine = originalDoc?.RdvSemaine || 0;
+            data.RdvSemaine = ancienRdvSemaine + nouveauNombreRdv;
+          }
         }
+  
         return data;
       },
     ],

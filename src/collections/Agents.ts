@@ -49,7 +49,7 @@ const Agents: CollectionConfig = {
       required: true,
       defaultValue: 0, 
       admin: {
-        readOnly: true,
+        readOnly: false,
       },
     },
   ],

@@ -75,7 +75,7 @@ const Agents: CollectionConfig = {
             nouveauNombreRdv !== ancienNombreRdv
           ) {
             const ancienRdvSemaine = originalDoc?.RdvSemaine || 0;
-            data.RdvSemaine = ancienRdvSemaine + nouveauNombreRdv;
+            data.RdvSemaine = ancienRdvSemaine + (nouveauNombreRdv - ancienNombreRdv);
           }
         }
   
